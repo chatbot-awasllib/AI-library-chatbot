@@ -6,15 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        .wasl-logo {
-    width: 82px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(56,189,248,0.85));
-    position: relative;
-    z-index: 1;
-    animation: logoFloat 5s ease-in-out infinite;
-}
+        * { box-sizing: border-box; }
 
         :root {
             --bg-main: #020617;
@@ -172,8 +164,6 @@
             position: relative;
             z-index: 1;
             animation: logoFloat 5s ease-in-out infinite;
-<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAAExAAIAAAAQAAAAWodpAAQAAAABAAAAagAAANQAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAAOigAwAEAAAAAQAAANUAAAAA/+0AOFBob3Rv c2hvcCAzLjAAOEJJTQQEAAAAAAAyAAAA... (base64 long string)
-" alt="شعار جامعة الوصل" class="wasl-logo">
         }
 
         @keyframes logoFloat {
@@ -630,6 +620,7 @@
 
 <div class="page">
     <header>
+        <!-- هنا الشعار، لما نرفعه باسم logo.png بيشتغل -->
         <img src="logo.png" alt="شعار جامعة الوصل" class="wasl-logo">
 
         <div class="header-text">
@@ -661,7 +652,6 @@
                 <button onclick="quickAsk('أين تقع مكتبة جامعة الوصل؟')">موقع المكتبة</button>
                 <button onclick="quickAsk('ما هي سياسة الإعارة؟')">سياسة الإعارة</button>
                 <button onclick="quickAsk('ما هي مصادر المعلومات المتاحة في مكتبة جامعة الوصل؟')">المصادر المتاحة</button>
-                <!-- هذا يفتح الفهرس الموحد -->
                 <button onclick="openOpac()">الفهرس الموحد</button>
                 <button onclick="quickAsk('ما هي قواعد البيانات المتاحة مثل المنهل؟')">قواعد البيانات</button>
                 <button onclick="quickAsk('ما هي البرامج الأكاديمية التي تخدمها المكتبة؟')">البرامج الأكاديمية</button>
@@ -771,8 +761,16 @@
     const userInput = document.getElementById("userInput");
     const typingIndicator = document.getElementById("typingIndicator");
 
-    // بيانات تجريبية للفهرس الموحد
+    // سجلات الفهرس الموحد (مع إضافة مشروع مريم كمثال)
     const opacRecords = [
+        {
+            title: "تصميم وبناء شات بوت لخدمات المكتبة الجامعية",
+            author: "الطالبة مريم – مشروع تخرج",
+            subject: "مكتبات جامعية – ذكاء اصطناعي – شات بوت",
+            cls: "027.7",
+            status: "available",
+            location: "قسم الرسائل الجامعية – مشروع تخرج مكتبة جامعة الوصل"
+        },
         {
             title: "مدخل إلى علم المكتبات والمعلومات",
             author: "د. أحمد عبد الهادي",
@@ -829,7 +827,6 @@
             "اسأليني عن المواعيد، الموقع، سياسة الإعارة، المصادر المتاحة، الفهرس الموحد، قواعد البيانات (مثل المنهل)، البرامج الأكاديمية، نظام التصنيف، أو طرق التواصل.",
             "bot"
         );
-        // عرض نتائج مبدئية في الفهرس الموحد
         renderOpacResults(opacRecords, "عرض افتراضي لعينة من سجلات الفهرس الموحد.");
     });
 
